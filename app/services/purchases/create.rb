@@ -8,11 +8,30 @@ module Purchases
     def execute
       amount = Money.new(amount_cents, currency)
 
-      Purchase.create!(
+      purchase = Purchase.create!(
         user: user,
         amount_cents: amount.cents,
         currency: currency,
         country: country
+      )
+
+      points = calculate_points(purchase)
+      create_point_ledger(points: points, purchase: purchase) if points.positive?
+      purchase
+    end
+
+    private
+
+    def calculate_points(purchase)
+      PointsCalculator.run!(purchase: purchase)
+    end
+
+    def create_point_ledger(points:, purchase:)
+      PointLedger.create!(
+        user: user,
+        purchase: purchase,
+        points: points,
+        reason: "new purchase"
       )
     end
   end

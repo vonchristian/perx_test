@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api do
     resources :purchases, only: [ :create ]
+    resources :users, only: [] do
+      resources :points, only: [ :index ], controller: "users/points"
+    end
   end
 end
