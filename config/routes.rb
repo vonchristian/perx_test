@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :purchases, only: [ :create ]
     resources :users, only: [] do
       resources :points, only: [ :index ], controller: "users/points"
-      resources :rewards, only: [ :create ], controller: "users/rewards"
+      resources :rewards, only: [ :index, :create ], controller: "users/rewards"
     end
   end
 end
