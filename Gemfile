@@ -58,6 +58,10 @@ group :development do
   gem "web-console"
 end
 
+group :test do
+  gem "shoulda-matchers", "~> 6.0"
+end
+
 gem "faker"
 gem "money-rails", "~> 1.12"
 gem "active_interaction", "~> 5.5"
