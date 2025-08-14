@@ -11,7 +11,7 @@ module Rewards
     end
 
     def reason
-      "Birthday month"
+      Reward::REASON_BIRTHDAY_MONTH
     end
   end
 end
