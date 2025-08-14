@@ -21,3 +21,7 @@ production:
   award_accumulated_points_free_coffee:
     command: "Rewards::AwardAccumulatedPointsFreeCoffeeJob.perform_later"
     schedule: at 01:00 on day 1 of every month
+  
+  award_big_spenders_free_movie_ticket:
+    command: "Rewards::AwardBigSpendersFreeMovieTicketJob.perform_later"
+    schedule: every day at 03:00

@@ -1,6 +1,7 @@
 class Reward < ApplicationRecord
   REASON_BIRTHDAY_MONTH = "Birthday month"
   REASON_MONTHLY_ACCUMULATED_POINTS = "Monthly accumulated points"
+  REASON_NEW_USER_BIG_SPENDER = "Big Spender"
 
   belongs_to :user
 
