@@ -67,3 +67,4 @@ gem "money-rails", "~> 1.12"
 gem "active_interaction", "~> 5.5"
 gem "pry-rails"
 gem "jsonapi-serializer"
+gem "whenever", require: false
