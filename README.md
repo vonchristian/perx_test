@@ -178,7 +178,8 @@ curl -X POST http://localhost:3000/api/users/1/rewards \
 - Clean, simple design using service objects to keep code organized.
 - Follow single responsibility principle so each part does one thing well.
 - Use feature branches with clear commits for each change.
-- Write tests for both units and API requests to make sure everything works.
+- Write tests for units, jobs, queries, services and API requests to make sure everything works.
 - Secure APIs with API keys.
 - Use serializers to format JSON responses consistently.
+- Recurring cron jobs that automatically award rewards to users based on predefined business logic 
 ---
