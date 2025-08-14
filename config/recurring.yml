@@ -17,3 +17,7 @@ production:
   award_birthday_free_coffee:
     command: "Rewards::AwardBirthDayFreeCoffeeJob.perform_later"
     schedule: every day at 01:00
+
+  award_accumulated_points_free_coffee:
+    command: "Rewards::AwardAccumulatedPointsFreeCoffeeJob.perform_later"
+    schedule: at 01:00 on day 1 of every month
