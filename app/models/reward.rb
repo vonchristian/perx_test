@@ -1,4 +1,5 @@
 class Reward < ApplicationRecord
+  REASON_BIRTHDAY_MONTH = "Birthday month"
   belongs_to :user
 
   enum :reward_type, { free_coffee: "free_coffee", free_movie_tickets: "free_movie_tickets" }

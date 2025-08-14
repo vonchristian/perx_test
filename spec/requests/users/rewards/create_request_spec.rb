@@ -18,12 +18,12 @@ RSpec.describe "API::Users::Rewards", type: :request do
     context "when user exists and rewards are created successfully" do
       it "returns created rewards JSON with status 201" do
         post api_user_rewards_path(user_id: user.id), headers: headers
-
         expect(response).to have_http_status(:created)
-        json = JSON.parse(response.body)
 
-        expect(json["data"]).to be_an(Array)
-        expect(json["data"].first["attributes"]["reward_type"]).to eq("free_coffee")
+        json = JSON.parse(response.body)
+        expected_json = UsersSerializer.new(user.reload, include: [ :rewards ]).serializable_hash.as_json
+
+        expect(json).to eq(expected_json)
       end
     end
 
@@ -39,7 +39,7 @@ RSpec.describe "API::Users::Rewards", type: :request do
 
     context "when service is invalid" do
       before do
-        allow(Rewards::Create).to receive(:run).with(user: user).and_return(
+        allow(Rewards::Award).to receive(:run).with(user: user).and_return(
           instance_double(
             ActiveInteraction::Base,
             valid?: false,
